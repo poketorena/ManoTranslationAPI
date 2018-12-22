@@ -41,8 +41,8 @@ Response
 
 |Version|対応文字列|
 |----|----|
-|1 |ひらがなのみ|
-|2 | ひらがな、英数字、記号の一部（詳しくは[こちら](https://github.com/para7/ManoTranslator/blob/master/TweetConverter/TweetConverter/Program.cs)）|
+|1 |全角ひらがなのみ|
+|2 | 全角ひらがな、半角英数字、半角記号の一部（詳しくは[こちら](https://github.com/para7/ManoTranslator/blob/master/TweetConverter/TweetConverter/Program.cs)）|
 
 バージョン2で辞書に**破壊的変更**が行われました。
 
