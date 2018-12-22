@@ -22,7 +22,7 @@ namespace ManoTranslationAPI
 
             try
             {
-                requestBody = JsonSerializer.Deserialize<RequestBody>(req.Body);
+                requestBody = await JsonSerializer.DeserializeAsync<RequestBody>(req.Body).ConfigureAwait(false);
             }
             catch (Exception)
             {
