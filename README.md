@@ -14,7 +14,7 @@ ManoTranslatorのWebAPI
 Request
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"Text": "あいうabc123!?", "SourceLanguage": "ja", "TargetLanguage": "mano"}' https://manotranslationapi.azurewebsites.net/api/translate
+curl -X POST -H "Content-Type: application/json" -d '{"Text": "あいうabc123!?", "SourceLanguage": "ja", "TargetLanguage": "mano", "DictionaryVersion": 2}' https://manotranslationapi.azurewebsites.net/api/translate
 ```
 
 Response
@@ -28,7 +28,7 @@ Response
 Request
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"Text": "むんっむんっほわっむんっむんっほわっむんっほわっむんっむんっむんっむんっほわっむんっむんっむんっむんっむんっほわっほわっむんっむんっほわっむんっむんっほわっむんっむんっほわっほわっむんっむんっほわっむんっむんっむんっむんっむんっむんっほわっむんっほわっむんっほわっほわっむんっむんっほわっほわっほわっほわっむんっむんっほわっほわっほわっむんっほわっむんっほわっむんっむんっほわっほわっむんっむんっむんっむんっむんっほわっほわっむんっほわっむんっほわっほわっむんっむんっむんっむんっほわっむんっむんっほわっほわっほわっほわっむんっほわっ", "SourceLanguage": "mano", "TargetLanguage": "ja"}' https://manotranslationapi.azurewebsites.net/api/translate
+curl -X POST -H "Content-Type: application/json" -d '{"Text": "むんっむんっほわっむんっむんっほわっむんっほわっむんっむんっむんっむんっほわっむんっむんっむんっむんっむんっほわっほわっむんっむんっほわっむんっむんっほわっむんっむんっほわっほわっむんっむんっほわっむんっむんっむんっむんっむんっむんっほわっむんっほわっむんっほわっほわっむんっむんっほわっほわっほわっほわっむんっむんっほわっほわっほわっむんっほわっむんっほわっむんっむんっほわっほわっむんっむんっむんっむんっむんっほわっほわっむんっほわっむんっほわっほわっむんっむんっむんっむんっほわっむんっむんっほわっほわっほわっほわっむんっほわっ", "SourceLanguage": "mano", "TargetLanguage": "ja", "DictionaryVersion": 2}' https://manotranslationapi.azurewebsites.net/api/translate
 ```
 
 Response
@@ -36,6 +36,17 @@ Response
 ```bash
 {"Data":"あいうabc123!?"}
 ```
+
+## DictionaryVersion
+
+|Version|対応文字列|
+|----|----|
+|1 |ひらがなのみ|
+|2 | ひらがな、英数字、記号の一部（詳しくは[こちら](https://github.com/para7/ManoTranslator/blob/master/TweetConverter/TweetConverter/Program.cs)）|
+
+バージョン2で辞書に**破壊的変更**が行われました。
+
+よってバージョン1とバージョン2の間に互換性はありません。
 
 ## Development Environment
 
