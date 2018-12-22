@@ -44,9 +44,14 @@ namespace ManoTranslationAPI
                 return new BadRequestResult();
             }
 
+            if (requestBody?.DictionaryVersion != 1 && requestBody?.DictionaryVersion != 2)
+            {
+                return new BadRequestResult();
+            }
+
             if (requestBody.SourceLanguage == "ja" && requestBody.TargetLanguage == "mano")
             {
-                var translatedText = ManoTranslator.Encode(requestBody.Text);
+                var translatedText = ManoTranslator.Encode(requestBody.Text, requestBody.DictionaryVersion);
                 var resultObject = new Result { Data = translatedText };
                 var resultJsonString = JsonSerializer.ToJsonString(resultObject);
                 return new OkObjectResult(resultJsonString);
@@ -54,7 +59,7 @@ namespace ManoTranslationAPI
 
             if (requestBody.SourceLanguage == "mano" && requestBody.TargetLanguage == "ja")
             {
-                var translatedText = ManoTranslator.Decode(requestBody.Text);
+                var translatedText = ManoTranslator.Decode(requestBody.Text, requestBody.DictionaryVersion);
                 var resultObject = new Result { Data = translatedText };
                 var resultJsonString = JsonSerializer.ToJsonString(resultObject);
                 return new OkObjectResult(resultJsonString);

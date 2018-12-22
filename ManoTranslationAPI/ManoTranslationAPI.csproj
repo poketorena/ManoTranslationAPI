@@ -6,10 +6,16 @@
   <ItemGroup>
     <None Remove="ManodictionaryDecode.data" />
     <None Remove="ManodictionaryEncode.data" />
+    <None Remove="Resources\ManoDecodeDictionaryVersion1.data" />
+    <None Remove="Resources\ManoDecodeDictionaryVersion2.data" />
+    <None Remove="Resources\ManoEncodeDictionaryVersion1.data" />
+    <None Remove="Resources\ManoEncodeDictionaryVersion2.data" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ManodictionaryDecode.data" />
-    <EmbeddedResource Include="Resources\ManodictionaryEncode.data" />
+    <EmbeddedResource Include="Resources\ManoDecodeDictionaryVersion1.data" />
+    <EmbeddedResource Include="Resources\ManoDecodeDictionaryVersion2.data" />
+    <EmbeddedResource Include="Resources\ManoEncodeDictionaryVersion1.data" />
+    <EmbeddedResource Include="Resources\ManoEncodeDictionaryVersion2.data" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MessagePack" Version="1.7.3.4" />

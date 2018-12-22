@@ -11,6 +11,25 @@ namespace ManoResourceConverter
     {
         private static void Main()
         {
+            Console.WriteLine("辞書のバージョンを数字で入力してください。");
+
+            int dictionaryVersion;
+
+            try
+            {
+                dictionaryVersion = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("入力に失敗しました。");
+                throw;
+            }
+
+            if (dictionaryVersion != 1 && dictionaryVersion != 2)
+            {
+                Console.WriteLine("不正なバージョンです。プログラムを終了します。");
+            }
+
             var reader = new XmlSerializer(typeof(Serial[]));
 
             Serial[] data;
@@ -42,8 +61,8 @@ namespace ManoResourceConverter
                 Directory.CreateDirectory("Resources");
             }
 
-            using (var streamWriterEncode = new StreamWriter(@"Resources\ManodictionaryEncode.data"))
-            using (var streamWriterDecode = new StreamWriter(@"Resources\ManodictionaryDecode.data"))
+            using (var streamWriterEncode = new StreamWriter($@"Resources\ManoEncodeDictionaryVersion{dictionaryVersion}.data"))
+            using (var streamWriterDecode = new StreamWriter($@"Resources\ManoDecodeDictionaryVersion{dictionaryVersion}.data"))
             {
                 MessagePackSerializer.Serialize(streamWriterEncode.BaseStream, encode);
                 MessagePackSerializer.Serialize(streamWriterDecode.BaseStream, decode);

@@ -12,11 +12,11 @@ namespace ManoTranslationAPI
         private static Dictionary<char, string> encode;
         private static Dictionary<string, char> decode;
 
-        public static string Encode(string str)
+        public static string Encode(string str, int dictionaryVersion)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            using (var streamReader = new StreamReader(assembly.GetManifestResourceStream("ManoTranslationAPI.Resources.ManodictionaryEncode.data"), Encoding.UTF8))
+            using (var streamReader = new StreamReader(assembly.GetManifestResourceStream($"ManoTranslationAPI.Resources.ManoEncodeDictionaryVersion{dictionaryVersion}.data"), Encoding.UTF8))
             {
                 encode = MessagePackSerializer.Deserialize<Dictionary<char, string>>(streamReader.BaseStream);
             }
@@ -37,11 +37,11 @@ namespace ManoTranslationAPI
             return ret;
         }
 
-        public static string Decode(string str)
+        public static string Decode(string str, int dictionaryVersion)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            using (var streamReader = new StreamReader(assembly.GetManifestResourceStream("ManoTranslationAPI.Resources.ManodictionaryDecode.data"), Encoding.UTF8))
+            using (var streamReader = new StreamReader(assembly.GetManifestResourceStream($"ManoTranslationAPI.Resources.ManoDecodeDictionaryVersion{dictionaryVersion}.data"), Encoding.UTF8))
             {
                 decode = MessagePackSerializer.Deserialize<Dictionary<string, char>>(streamReader.BaseStream);
             }
